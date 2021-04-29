@@ -1,31 +1,28 @@
 package com.devsuperior.myFirstProject.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-public class Category implements Serializable {
+public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	private String name;
+	private Double price;
 	
-	//Annotation que vai efetuar um pre-processamento pra dizer que não é para serializar a lista de produtos de uma categoria 
-	@JsonIgnore
-	private List<Product> products = new ArrayList<>();
+	private Category category;
 	
-	public Category() {
+	public Product() {
 		
 	}
 
-	public Category(Long id, String name) {
+	public Product(Long id, String name, Double price, Category category) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.price = price;
+		this.category = category;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -42,6 +39,22 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -49,15 +62,6 @@ public class Category implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
-	public List<Product> getProducts() {
-		return products;
-	}
-	
-	//O set products não vai ter pq em nenhum momento vou trocar minha lista ou mudar
-//	public void setProducts(List<Product> products) {
-//		this.products = products;
-//	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -67,7 +71,7 @@ public class Category implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -75,7 +79,6 @@ public class Category implements Serializable {
 			return false;
 		return true;
 	}
-	
 	
 	
 	
