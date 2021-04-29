@@ -3,9 +3,12 @@ package com.devsuperior.myFirstProject.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -14,6 +17,7 @@ public class Category implements Serializable {
 	
 	//Annotation que vai efetuar um pre-processamento pra dizer que não é para serializar a lista de produtos de uma categoria 
 	@JsonIgnore
+	@OneToMany(mappedBy = "category")
 	private List<Product> products = new ArrayList<>();
 	
 	public Category() {

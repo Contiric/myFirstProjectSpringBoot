@@ -38,7 +38,7 @@ public class ProductResource{
 	 public ResponseEntity<Product> 
 	 //O PathVariable vai reconhecer o número do id que colocarmos na url
 	 findById(@PathVariable Long id) { 
-		 Product cat = categoryRepository.findById(id);
+		 Product cat = categoryRepository.findById(id).get();
 		  return ResponseEntity.ok().body(cat); 
 	 }
 	 

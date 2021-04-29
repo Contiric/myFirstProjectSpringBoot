@@ -38,7 +38,7 @@ public class CategoryResource{
 	 public ResponseEntity<Category> 
 	 //O PathVariable vai reconhecer o número do id que colocarmos na url
 	 findById(@PathVariable Long id) { 
-		 Category cat = categoryRepository.findById(id);
+		 Category cat = categoryRepository.findById(id).get();
 		  return ResponseEntity.ok().body(cat); 
 	 }
 	 
